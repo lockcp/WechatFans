@@ -38,6 +38,12 @@
 	作者：二呆
 	网站：http://www.tongleer.com/
 	公众号：同乐儿
-### Demo
+### 其他
+
+#### Demo
 
 [点击这里体验](https://blog.ylwind.cn/archives/26.html)
+
+#### 开源许可
+
+[GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
