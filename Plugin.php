@@ -36,10 +36,10 @@ class WechatFans_Plugin implements Typecho_Plugin_Interface{
 			<script src="https://apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 			<h6>使用方法</h6>
 			<span><p>1、配置下方各项参数；</p></span>
-			<span><p>2、编写文章时点击编辑器VX按钮，插入以下代码：<br />&lt;!--wechatfans start--><br />&lt;!--wechatfans end--><br />代码，中间的文字即为隐藏内容；</p></span>
+			<span><p>2、编写文章时点击编辑器VX按钮，插入以下代码：<br />&lt;!--wechatfans start-->xxx&lt;!--wechatfans end--><br />代码中间的文字xxx即为隐藏内容；</p></span>
 			<span>
 				<p>
-					3、<font color="blue">【替换输出内容！】</font><br />
+					3、<font color="blue">【替换输出内容】</font><br />
 					替换主题目录下post.php中输出内容的代码，<font color="red">若已有自定义的输出内容代码，则可以不替换</font>，如：<br />
 					&lt;?php $this->content; ?>替换成&lt;?php echo $this->content; ?>
 				</p>
@@ -47,7 +47,7 @@ class WechatFans_Plugin implements Typecho_Plugin_Interface{
 						<span>
 				<p>
 					4、<font color="blue">【微信公众号配置】</font><br />
-					登录微信公众号后台，点击侧边栏广告与服务-小程序管理，关联小程序<font color="red">杨柳验证码</font>，然后点击内容与互动-自定义菜单，添加一个菜单跳转到“杨柳验证码”小程序，路径填写为 <font color="red">pages/index/index?id={你的加密密钥}</font>
+					登录微信公众号后台，点击侧边栏广告与服务-小程序管理，关联小程序<font color="red">杨柳验证码</font>，然后点击内容与互动-自定义菜单，添加一个菜单跳转到“杨柳验证码”小程序，路径填写为 <font color="red">生成密钥时显示的小程序路径</font>
 				</p>
 			</span>
 		</small>');
@@ -61,7 +61,7 @@ class WechatFans_Plugin implements Typecho_Plugin_Interface{
         $form->addInput($wechat_qrimg);
         $wechat_day = new Typecho_Widget_Helper_Form_Element_Text('wechat_day', array("value"), '30', _t('Cookie有效期天数'), _t('在有效期内，访客无需再获取验证码可直接访问隐藏内容'));
         $form->addInput($wechat_day);
-        $wechat_key = new Typecho_Widget_Helper_Form_Element_Text('wechat_key', array("value"), $core->createSecret(), _t('加密密钥'), _t('用于加密Cookie，生成验证码，默认是自动生成，不建议修改。构成规则：16位大写字母、=和数字2-7'));
+        $wechat_key = new Typecho_Widget_Helper_Form_Element_Text('wechat_key', array("value"), '', _t('加密密钥(务必使用生成接口生成)'), _t('用于加密Cookie，生成验证码，<a href="https://v-code.app.ylwind.cn/creat" target="_blank">点击这里生成密钥</a>'));
         $form->addInput($wechat_key);
 
     }
